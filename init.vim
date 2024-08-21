@@ -1,6 +1,11 @@
 inoremap qq <Esc>
+inoremap QQ <Esc>
 
-inoremap { {<CR>}<Esc>ko
+inoremap { {}<Esc>i
+inoremap ( ()<Esc>i
+inoremap [ []<Esc>i
+inoremap " ""<Esc>i
+inoremap ' ''<Esc>i
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
