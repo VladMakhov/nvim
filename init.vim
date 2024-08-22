@@ -1,5 +1,5 @@
-inoremap qq <Esc>
-inoremap QQ <Esc>
+inoremap qq <Esc>l
+inoremap QQ <Esc>l
 
 inoremap { {}<Esc>i
 inoremap ( ()<Esc>i
@@ -10,7 +10,8 @@ inoremap < <><Esc>i
 
 nnoremap ,<space> :nohlsearch<CR>
 
-let hlstate=0
+set hlsearch
+let hlstate=1
 
 nnoremap ff :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate<cr>
 
@@ -23,7 +24,6 @@ inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <silent><expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
 inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
-
 
 syntax on
 
@@ -64,7 +64,7 @@ set splitright
 set hidden
 
 " start scrolling when 8 lines from top or bottom
-set scrolloff=4
+set scrolloff=7
 
 " Save undo history
 set undofile
