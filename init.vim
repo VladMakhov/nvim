@@ -7,13 +7,17 @@ inoremap [ []<Esc>i
 inoremap " ""<Esc>i
 inoremap ' ''<Esc>i
 inoremap < <><Esc>i
-
 nnoremap ,<space> :nohlsearch<CR>
 
-set hlsearch
-let hlstate=1
 
-nnoremap ff :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate<cr>
+" Включение подсветки при поиске слова с помощью @ и прыжок к следующему вхождению
+nnoremap @ :let @/='\<'.expand('<cword>').'\>'<CR>:set hlsearch<CR>*
+
+" Отключение подсветки при вводе ff
+nnoremap ff :nohlsearch<CR>
+
+" Откат изменений c 'u' на 'q' 
+nnoremap q u
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
