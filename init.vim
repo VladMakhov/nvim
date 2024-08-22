@@ -6,6 +6,13 @@ inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
 inoremap " ""<Esc>i
 inoremap ' ''<Esc>i
+inoremap < <><Esc>i
+
+nnoremap ,<space> :nohlsearch<CR>
+
+let hlstate=0
+
+nnoremap ff :if (hlstate == 0) \| nohlsearch \| else \| set hlsearch \| endif \| let hlstate=1-hlstate<cr>
 
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -21,6 +28,8 @@ inoremap <silent><expr> <CR> pumvisible() ? coc#_select_confirm() : "\<CR>"
 syntax on
 
 set noswapfile
+
+set encoding=utf-8
 
 " Better colors
 set termguicolors
@@ -69,7 +78,13 @@ set smartcase
 
 set noshowmode
 
+let g:matchup_matchparen_offscreen = {'method': 'popup'}
+
+nnoremap a i
+
 call plug#begin('~/.config/nvim/plugged')
+
+Plug 'andymass/vim-matchup'
 
 Plug 'gruvbox-community/gruvbox'
 
