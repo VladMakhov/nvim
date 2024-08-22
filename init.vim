@@ -7,8 +7,12 @@ inoremap [ []<Esc>i
 inoremap " ""<Esc>i
 inoremap ' ''<Esc>i
 inoremap < <><Esc>i
+
+inoremap <S-Del> <Esc>ldwi
+
 nnoremap ,<space> :nohlsearch<CR>
 
+nnoremap <C-w> <C-y>
 
 " Включение подсветки при поиске слова с помощью @ и прыжок к следующему вхождению
 nnoremap @ :let @/='\<'.expand('<cword>').'\>'<CR>:set hlsearch<CR>*
