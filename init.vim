@@ -16,6 +16,7 @@ nnoremap <C-w> <C-y>
 
 " Включение подсветки при поиске слова с помощью @ и прыжок к следующему вхождению
 nnoremap @ :let @/='\<'.expand('<cword>').'\>'<CR>:set hlsearch<CR>*
+nnoremap # :let @/='\<'.expand('<cword>').'\>'<CR>:set hlsearch<CR>#
 
 " Отключение подсветки при вводе ff
 nnoremap ff :nohlsearch<CR>
@@ -86,13 +87,9 @@ set smartcase
 
 set noshowmode
 
-let g:matchup_matchparen_offscreen = {'method': 'popup'}
-
 nnoremap a i
 
 call plug#begin('~/.config/nvim/plugged')
-
-Plug 'andymass/vim-matchup'
 
 Plug 'gruvbox-community/gruvbox'
 
