@@ -1,12 +1,7 @@
 inoremap qq <Esc>l
 inoremap QQ <Esc>l
 
-inoremap { {}<Esc>i
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-inoremap " ""<Esc>i
-inoremap ' ''<Esc>i
-inoremap < <><Esc>i
+"inoremap { {}<Esc>i
 
 inoremap <S-Del> <Esc>ldwi
 
