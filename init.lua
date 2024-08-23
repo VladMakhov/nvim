@@ -1,4 +1,3 @@
--- Vafreg zbqr znccvatf
 vim.api.nvim_set_keymap('i', 'qq', '<Esc>l', { noremap = true })
 vim.api.nvim_set_keymap('i', 'QQ', '<Esc>l', { noremap = true })
 -- vim.api.nvim_set_keymap('i', '{', '{}<Esc>i', { noremap = true })
@@ -28,7 +27,7 @@ vim.api.nvim_set_keymap('n', '<leader>fh', '<cmd>Telescope help_tags<cr>', { nor
 vim.api.nvim_set_keymap('i', '<TAB>', 'pumvisible() ? "\\<C-n>" : "\\<TAB>"', { noremap = true, expr = true, silent = true })
 vim.api.nvim_set_keymap('i', '<S-TAB>', 'pumvisible() ? "\\<C-p>" : "\\<S-TAB>"', { noremap = true, expr = true, silent = true })
 vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? coc#_select_confirm() : "\\<CR>"', { noremap = true, expr = true, silent = true })
-vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'zz', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 
 -- Settings
 vim.cmd('syntax on')
@@ -72,6 +71,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'tribela/transparent.nvim'
 Plug 'nvim-tree/nvim-web-devicons' " optional
 Plug 'nvim-tree/nvim-tree.lua'
+
 call plug#end()
 
 colorscheme gruvbox
