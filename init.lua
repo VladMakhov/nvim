@@ -30,6 +30,8 @@ vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? coc#_select_confirm() : "\\
 vim.api.nvim_set_keymap('n', 'zz', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'H', 'b', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'L', 'w', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'J', 'j', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'K', 'k', { noremap = true, silent = true })
 
 -- Settings
 vim.cmd('syntax on')
@@ -49,7 +51,7 @@ vim.o.hlsearch = false
 vim.o.splitbelow = true
 vim.o.splitright = true
 vim.o.hidden = true
-vim.o.scrolloff = 7
+vim.o.scrolloff = 8 
 vim.o.undofile = true
 vim.o.mouse = 'a'
 vim.o.ignorecase = true
@@ -73,6 +75,7 @@ Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'tribela/transparent.nvim'
 Plug 'nvim-tree/nvim-web-devicons' 
 Plug 'nvim-tree/nvim-tree.lua'
+Plug 'ThePrimeagen/vim-be-good'
 
 call plug#end()
 
