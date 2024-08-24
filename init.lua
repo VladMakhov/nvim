@@ -28,6 +28,8 @@ vim.api.nvim_set_keymap('i', '<TAB>', 'pumvisible() ? "\\<C-n>" : "\\<TAB>"', { 
 vim.api.nvim_set_keymap('i', '<S-TAB>', 'pumvisible() ? "\\<C-p>" : "\\<S-TAB>"', { noremap = true, expr = true, silent = true })
 vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? coc#_select_confirm() : "\\<CR>"', { noremap = true, expr = true, silent = true })
 vim.api.nvim_set_keymap('n', 'zz', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'H', 'b', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'L', 'w', { noremap = true, silent = true })
 
 -- Settings
 vim.cmd('syntax on')
@@ -69,7 +71,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'tribela/transparent.nvim'
-Plug 'nvim-tree/nvim-web-devicons' " optional
+Plug 'nvim-tree/nvim-web-devicons' 
 Plug 'nvim-tree/nvim-tree.lua'
 
 call plug#end()
