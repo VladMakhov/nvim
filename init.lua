@@ -78,6 +78,7 @@ Plug 'ThePrimeagen/vim-be-good'
 Plug 'daltonmenezes/aura-theme', { 'rtp': 'packages/neovim' }
 Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-fugitive'
+Plug 'tribela/transparent.nvim'
 
 call plug#end()
 
