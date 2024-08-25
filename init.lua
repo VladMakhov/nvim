@@ -62,26 +62,32 @@ vim.o.showmode = false
 vim.api.nvim_set_keymap('n', 'a', 'i', { noremap = true })
 
 -- Plugin management with vim-plug
+
+-- Plug 'tribela/transparent.nvim'
 vim.cmd([[
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'gruvbox-community/gruvbox'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'itchyny/lightline.vim'
-Plug 'tpope/vim-fugitive'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'tribela/transparent.nvim'
 Plug 'nvim-tree/nvim-web-devicons' 
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'ThePrimeagen/vim-be-good'
+Plug 'daltonmenezes/aura-theme', { 'rtp': 'packages/neovim' }
+Plug 'gruvbox-community/gruvbox'
+Plug 'tpope/vim-fugitive'
 
 call plug#end()
 
-colorscheme gruvbox
+colorscheme gruvbox 
 set background=dark
 ]])
+
+-- colorscheme gruvbox 
+-- colorscheme aura-dark
+
 
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
@@ -108,3 +114,4 @@ require("nvim-tree").setup({
     dotfiles = true,
   },
 })
+
