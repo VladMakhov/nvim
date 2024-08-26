@@ -59,7 +59,7 @@ vim.o.smartcase = true
 vim.o.showmode = false
 
 -- Normal mode mapping for 'a'
-vim.api.nvim_set_keymap('n', 'a', 'i', { noremap = true })
+-- vim.api.nvim_set_keymap('n', 'a', 'i', { noremap = true })
 
 -- Plugin management with vim-plug
 
@@ -79,6 +79,7 @@ Plug 'daltonmenezes/aura-theme', { 'rtp': 'packages/neovim' }
 Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'tribela/transparent.nvim'
+Plug 'windwp/nvim-autopairs'
 
 call plug#end()
 
@@ -116,3 +117,4 @@ require("nvim-tree").setup({
   },
 })
 
+require("nvim-autopairs").setup {}
