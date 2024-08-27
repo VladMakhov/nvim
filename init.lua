@@ -1,10 +1,8 @@
 vim.api.nvim_set_keymap('i', 'qq', '<Esc>l', { noremap = true })
 vim.api.nvim_set_keymap('i', 'QQ', '<Esc>l', { noremap = true })
--- vim.api.nvim_set_keymap('i', '{', '{}<Esc>i', { noremap = true })
 vim.api.nvim_set_keymap('i', '<S-Del>', '<Esc>ldwi', { noremap = true })
 
 -- Normal mode mappings
-vim.api.nvim_set_keymap('n', ',<space>', ':nohlsearch<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-w>', '<C-y>', { noremap = true })
 
 -- Highlight search and jump to next occurrence
@@ -59,11 +57,10 @@ vim.o.smartcase = true
 vim.o.showmode = false
 
 -- Normal mode mapping for 'a'
--- vim.api.nvim_set_keymap('n', 'a', 'i', { noremap = true })
+vim.api.nvim_set_keymap('n', 'a', 'i', { noremap = true })
 
 -- Plugin management with vim-plug
 
--- Plug 'tribela/transparent.nvim'
 vim.cmd([[
 call plug#begin('~/.config/nvim/plugged')
 
@@ -78,18 +75,17 @@ Plug 'ThePrimeagen/vim-be-good'
 Plug 'daltonmenezes/aura-theme', { 'rtp': 'packages/neovim' }
 Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-fugitive'
-Plug 'tribela/transparent.nvim'
 Plug 'windwp/nvim-autopairs'
 
 call plug#end()
 
-colorscheme gruvbox 
+colorscheme gruvbox
 set background=dark
 ]])
 
+-- Plug 'tribela/transparent.nvim'
 -- colorscheme gruvbox 
 -- colorscheme aura-dark
-
 
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
@@ -117,4 +113,40 @@ require("nvim-tree").setup({
   },
 })
 
-require("nvim-autopairs").setup {}
+local npairs = require('nvim-autopairs')
+local Rule = require('nvim-autopairs.rule')
+local cond = require('nvim-autopairs.conds')
+
+npairs.setup({
+    check_ts = true,
+    ts_config = {
+        lua = {'string'},-- it will not add a pair on that treesitter node
+        javascript = {'template_string'},
+        java = false,-- don't check treesitter on java
+    }
+})
+
+-- Integrate with coc.nvim
+npairs.add_rules({
+    Rule("(", ")", "lua")
+        :with_pair(cond.not_after_regex_check("%%"))
+        :with_pair(cond.not_before_regex_check("xxx", 3))
+        :with_move(cond.none())
+        :with_del(cond.none())
+        :with_cr(cond.none())
+})
+
+-- If you want insert `(` after select function or method item
+local remap = vim.api.nvim_set_keymap
+_G.MUtils= {}
+
+MUtils.completion_confirm=function()
+    if vim.fn["coc#pum#visible"]() ~= 0 then
+        return vim.fn["coc#_select_confirm"]()
+    else
+        return npairs.autopairs_cr()
+    end
+end
+
+remap('i' , '<CR>','v:lua.MUtils.completion_confirm()', {expr = true , noremap = true})
+
