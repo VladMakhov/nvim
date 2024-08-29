@@ -80,6 +80,7 @@ Plug 'Mofiqul/vscode.nvim'
 
 call plug#end()
 
+colorscheme gruvbox 
 set background=dark
 ]])
 
@@ -187,4 +188,4 @@ require('vscode').setup({
 -- require('vscode').load()
 
 -- load the theme without affecting devicon colors.
-vim.cmd.colorscheme "vscode"
+-- vim.cmd.colorscheme "vscode"
