@@ -77,14 +77,16 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'windwp/nvim-autopairs'
 Plug 'Mofiqul/vscode.nvim'
+Plug 'https://github.com/folke/tokyonight.nvim'
 
 call plug#end()
 
-colorscheme gruvbox 
+colorscheme tokyonight-night
 set background=dark
 ]])
 
 -- Plug 'tribela/transparent.nvim'
+-- colorscheme tokyonight
 -- colorscheme gruvbox 
 -- colorscheme aura-dark
 
