@@ -78,6 +78,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'windwp/nvim-autopairs'
 Plug 'Mofiqul/vscode.nvim'
 Plug 'https://github.com/folke/tokyonight.nvim'
+Plug 'numToStr/Comment.nvim'
 
 call plug#end()
 
@@ -96,6 +97,8 @@ vim.g.loaded_netrwPlugin = 1
 
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
+
+require('Comment').setup()
 
 -- empty setup using defaults
 require("nvim-tree").setup()
