@@ -27,7 +27,9 @@ vim.api.nvim_set_keymap('i', '<S-TAB>', 'pumvisible() ? "\\<C-p>" : "\\<S-TAB>"'
 vim.api.nvim_set_keymap('i', '<CR>', 'pumvisible() ? coc#_select_confirm() : "\\<CR>"', { noremap = true, expr = true, silent = true })
 vim.api.nvim_set_keymap('n', 'zz', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'H', 'b', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 'H', 'b', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'L', 'w', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', 'L', 'w', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'J', 'j', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'K', 'k', { noremap = true, silent = true })
 
