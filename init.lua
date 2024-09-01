@@ -1,9 +1,8 @@
+vim.api.nvim_set_keymap('n', 'tt', ':lua tsp()<CR>', { noremap = true })
+
 vim.api.nvim_set_keymap('i', 'qq', '<Esc>l', { noremap = true })
 vim.api.nvim_set_keymap('i', 'QQ', '<Esc>l', { noremap = true })
 vim.api.nvim_set_keymap('i', '<S-Del>', '<Esc>ldwi', { noremap = true })
-
--- Normal mode mappings
-vim.api.nvim_set_keymap('n', '<C-w>', '<C-y>', { noremap = true })
 
 -- Highlight search and jump to next occurrence
 vim.api.nvim_set_keymap('n', '@', ":let @/='\\<'.expand('<cword>').'\\>'<CR>:set hlsearch<CR>*", { noremap = true })
@@ -33,6 +32,8 @@ vim.api.nvim_set_keymap('v', 'L', 'w', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'J', 'j', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'K', 'k', { noremap = true, silent = true })
 
+vim.keymap.set('n', 'mm', vim.cmd.UndotreeToggle)
+
 -- Settings
 vim.cmd('syntax on')
 vim.o.swapfile = false
@@ -57,6 +58,7 @@ vim.o.mouse = 'a'
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.showmode = false
+vim.g.undotree_SplitWidth = 30
 
 -- Normal mode mapping for 'a'
 -- vim.api.nvim_set_keymap('n', 'a', 'i', { noremap = true })
@@ -82,16 +84,19 @@ Plug 'Mofiqul/vscode.nvim'
 Plug 'https://github.com/folke/tokyonight.nvim'
 Plug 'numToStr/Comment.nvim'
 
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
+Plug 'https://github.com/mbbill/undotree'
+Plug 'rose-pine/neovim'
+
 call plug#end()
 
-colorscheme tokyonight-night
+colorscheme rose-pine-main
 set background=dark
 ]])
 
 -- Plug 'tribela/transparent.nvim'
--- colorscheme tokyonight
--- colorscheme gruvbox 
--- colorscheme aura-dark
+-- vim.g.transparent_enabled = 0
 
 -- disable netrw at the very start of your init.lua
 vim.g.loaded_netrw = 1
@@ -130,7 +135,7 @@ npairs.setup({
     ts_config = {
         lua = {'string'},-- it will not add a pair on that treesitter node
         javascript = {'template_string'},
-        java = false,-- don't check treesitter on java
+        -- java = false,-- don't check treesitter on java
     }
 })
 
@@ -196,3 +201,82 @@ require('vscode').setup({
 
 -- load the theme without affecting devicon colors.
 -- vim.cmd.colorscheme "vscode"
+
+
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "javascript", "c_sharp", "typescript", "css", "html", "java"},
+
+  sync_install = false,
+
+  auto_install = true,
+
+  -- ignore_install = { "javascript" },
+
+
+  highlight = {
+    enable = true,
+
+    additional_vim_regex_highlighting = false,
+  },
+}
+
+-- Функция для установки фиксированной ширины undotree
+local function set_undotree_width()
+vim.cmd('vertical resize 50')
+end
+
+-- Функция для установки фиксированной высоты diffpanel_3
+local function set_diffpanel_height()
+vim.cmd('resize 20')
+end
+
+-- Автокоманда для установки ширины при открытии undotree
+vim.api.nvim_create_autocmd('BufWinEnter', {
+pattern = 'undotree_*',
+callback = set_undotree_width,
+})
+
+-- Автокоманда для установки ширины при изменении размера окна
+vim.api.nvim_create_autocmd('VimResized', {
+pattern = '*',
+callback = function()
+    if vim.fn.bufname() == 'undotree' then
+     set_undotree_width()
+    end
+end,
+})
+
+-- Автокоманда для установки высоты при открытии diffpanel_3
+vim.api.nvim_create_autocmd('BufWinEnter', {
+pattern = 'diffpanel_3',
+callback = set_diffpanel_height,
+})
+
+-- Автокоманда для установки высоты при изменении размера окна
+vim.api.nvim_create_autocmd('VimResized', {
+pattern = '*',
+callback = function()
+    if vim.fn.bufname() == 'diffpanel_3' then
+     set_diffpanel_height()
+    end
+end,
+})
+
+local is_transparent = false
+
+function tsp(color)
+    color = color or "rose-pine-main"
+    vim.cmd.colorscheme(color)
+
+    if is_transparent then
+        vim.api.nvim_set_hl(0, "Normal", { bg = vim.api.nvim_get_hl_by_name("Normal", true).background })
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = vim.api.nvim_get_hl_by_name("NormalFloat", true).background })
+    else
+        vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+        vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+    end
+
+    is_transparent = not is_transparent
+end
+
