@@ -39,8 +39,7 @@ return require('packer').startup(function(use)
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim'
     }
-    -- use {'neoclide/coc.nvim', branch = 'release'}
-    -- use {'neoclide/coc.nvim', branch = 'master', run = 'npm ci'}
+    use {'neoclide/coc.nvim', branch = 'release'}
     use 'morhetz/gruvbox'
     if packer_bootstrap then
         require('packer').sync()
