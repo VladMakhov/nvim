@@ -74,10 +74,15 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  ale = {
+  ["coc.nvim"] = {
     loaded = true,
-    path = "C:\\Users\\Administrator\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\ale",
-    url = "https://github.com/dense-analysis/ale"
+    path = "C:\\Users\\Administrator\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\coc.nvim",
+    url = "https://github.com/neoclide/coc.nvim"
+  },
+  gruvbox = {
+    loaded = true,
+    path = "C:\\Users\\Administrator\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\gruvbox",
+    url = "https://github.com/morhetz/gruvbox"
   },
   ["lightline.vim"] = {
     loaded = true,
@@ -128,11 +133,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\Administrator\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-web-devicons",
     url = "https://github.com/nvim-tree/nvim-web-devicons"
-  },
-  ["omnisharp-vim"] = {
-    loaded = true,
-    path = "C:\\Users\\Administrator\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\omnisharp-vim",
-    url = "https://github.com/OmniSharp/omnisharp-vim"
   },
   ["packer.nvim"] = {
     loaded = true,
