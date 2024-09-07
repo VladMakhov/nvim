@@ -4,6 +4,7 @@ require('mason-lspconfig').setup({
         'lua_ls',
         'csharp_ls',
         'eslint',
+        'clangd',
     }
 })
 
@@ -26,3 +27,4 @@ require('lspconfig').csharp_ls.setup {
 
 require('lspconfig').eslint.setup {}
 
+require'lspconfig'.clangd.setup {}
