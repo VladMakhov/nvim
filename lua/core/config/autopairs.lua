@@ -7,7 +7,8 @@ npairs.setup({
     ts_config = {
         lua = {'string'},
         javascript = {'template_string'},
-    }
+    },
+    fast_wrap = {},
 })
 
 npairs.add_rules({
@@ -18,4 +19,17 @@ npairs.add_rules({
         :with_del(cond.none())
         :with_cr(cond.none())
 })
+
+-- Интеграция с coc.nvim
+_G.MUtils= {}
+
+MUtils.CR = function()
+    if vim.fn['coc#pum#visible']() ~= 0 then
+        return vim.fn['coc#_select_confirm']()
+    else
+        return npairs.autopairs_cr()
+    end
+end
+
+vim.api.nvim_set_keymap('i' , '<CR>', 'v:lua.MUtils.CR()', {expr = true , noremap = true})
 
