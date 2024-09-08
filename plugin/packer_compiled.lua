@@ -109,6 +109,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Administrator\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\neovim",
     url = "https://github.com/rose-pine/neovim"
   },
+  ["no-clown-fiesta.nvim"] = {
+    loaded = true,
+    path = "C:\\Users\\Administrator\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\no-clown-fiesta.nvim",
+    url = "https://github.com/aktersnurra/no-clown-fiesta.nvim"
+  },
   ["nvim-autopairs"] = {
     loaded = true,
     path = "C:\\Users\\Administrator\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\nvim-autopairs",
