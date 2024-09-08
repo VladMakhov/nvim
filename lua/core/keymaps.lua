@@ -19,6 +19,7 @@ vim.api.nvim_set_keymap('n', 'L', 'w', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', 'L', 'w', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'J', 'j', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'K', 'k', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<C-c>', '"+y', { noremap = true, silent = true })
 vim.keymap.set('n', 'mm', vim.cmd.UndotreeToggle)
 vim.cmd('syntax on')
 vim.o.swapfile = false
