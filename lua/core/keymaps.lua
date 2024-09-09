@@ -1,5 +1,6 @@
 vim.api.nvim_set_keymap('n', 'tt', ':TransparentToggle<CR>', { noremap = true })
-vim.api.nvim_set_keymap('i', 'qq', '<Esc>l', { noremap = true })
+vim.api.nvim_set_keymap('i', 'qq', '<Esc>:set relativenumber<CR>l', { noremap = true })
+vim.api.nvim_set_keymap('n', 'a', ':set norelativenumber<CR>a', { noremap = true })
 vim.api.nvim_set_keymap('i', 'QQ', '<Esc>l', { noremap = true })
 vim.api.nvim_set_keymap('i', '<S-Del>', '<Esc>ldwi', { noremap = true })
 vim.api.nvim_set_keymap('n', '@', ":let @/='\\<'.expand('<cword>').'\\>'<CR>:set hlsearch<CR>*", { noremap = true })
@@ -20,6 +21,8 @@ vim.api.nvim_set_keymap('v', 'L', 'w', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'J', 'j', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', 'K', 'k', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('v', '<C-c>', '"+y', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', 'i', ':set norelativenumber<CR>i', { noremap = true, silent = true })
+
 vim.keymap.set('n', 'mm', vim.cmd.UndotreeToggle)
 vim.cmd('syntax on')
 vim.o.swapfile = false
