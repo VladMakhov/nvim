@@ -19,4 +19,4 @@ require('vague').setup({
 
     }
 })
-vim.cmd [[ colorscheme rose-pine-moon]]
+vim.cmd [[ colorscheme vague]]
