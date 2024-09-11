@@ -42,6 +42,7 @@ return require('packer').startup(function(use)
     use {'neoclide/coc.nvim', branch = 'release'}
     use 'morhetz/gruvbox'
     use 'aktersnurra/no-clown-fiesta.nvim'
+    use 'vague2k/vague.nvim'
     if packer_bootstrap then
         require('packer').sync()
     end

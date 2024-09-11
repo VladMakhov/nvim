@@ -26,6 +26,8 @@ vim.api.nvim_set_keymap('n', 'i', ':set norelativenumber<CR>i', { noremap = true
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
+vim.keymap.set('n', '<C-a>', "ggVG")
+
 vim.keymap.set('n', 'mm', vim.cmd.UndotreeToggle)
 vim.cmd('syntax on')
 vim.o.swapfile = false
