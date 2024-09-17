@@ -25,6 +25,27 @@ vim.api.nvim_set_keymap('v', '<C-c>', '"+y', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', 'i', ':set norelativenumber<CR>i', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', 'a', ':set norelativenumber<CR>a', { noremap = true })
 
+function _G.insert_code()
+local code = [[
+try
+{
+
+}
+catch (Exception ex)
+{
+    _log.Error(ex);
+}
+]]
+-- Вставляем код в текущий буфер
+vim.api.nvim_put(vim.split(code, '\n'), 'l', true, true)
+-- Перемещаем курсор в блок try с одним табом отступа
+local cursor_pos = vim.api.nvim_win_get_cursor(0)
+vim.api.nvim_win_set_cursor(0, {cursor_pos[1] - 4, 4})
+end
+
+-- Устанавливаем бинд для <leader>tc
+vim.api.nvim_set_keymap('n', '<leader>tr', ':lua insert_code()<CR>3ki<Tab>', { noremap = true, silent = true })
+
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
