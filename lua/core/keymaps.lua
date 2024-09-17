@@ -25,27 +25,6 @@ vim.api.nvim_set_keymap('v', '<C-c>', '"+y', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', 'i', ':set norelativenumber<CR>i', { noremap = true, silent = true })
 -- vim.api.nvim_set_keymap('n', 'a', ':set norelativenumber<CR>a', { noremap = true })
 
-function _G.insert_code()
-local code = [[
-try
-{
-
-}
-catch (Exception ex)
-{
-    _log.Error(ex);
-}
-]]
--- Вставляем код в текущий буфер
-vim.api.nvim_put(vim.split(code, '\n'), 'l', true, true)
--- Перемещаем курсор в блок try с одним табом отступа
-local cursor_pos = vim.api.nvim_win_get_cursor(0)
-vim.api.nvim_win_set_cursor(0, {cursor_pos[1] - 4, 4})
-end
-
--- Устанавливаем бинд для <leader>tc
-vim.api.nvim_set_keymap('n', '<leader>tr', ':lua insert_code()<CR>3ki<Tab>', { noremap = true, silent = true })
-
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 
@@ -80,3 +59,34 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 vim.o.background = 'dark'
 vim.o.signcolumn = "yes:1"
+
+
+-- Функция для вставки try-catch блока
+local function insert_try_catch()
+local start_line, start_col = unpack(vim.api.nvim_buf_get_mark(0, '<'))
+local end_line, end_col = unpack(vim.api.nvim_buf_get_mark(0, '>'))
+
+-- Получаем выделенный текст
+local lines = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)
+
+-- Добавляем try-catch блок
+table.insert(lines, 1, "try")
+table.insert(lines, 2, "{")
+table.insert(lines, #lines + 1, "}")
+table.insert(lines, #lines + 1, "catch (Exception ex)")
+table.insert(lines, #lines + 1, "{")
+table.insert(lines, #lines + 1, "    logger.Error(ex);")
+table.insert(lines, #lines + 1, "}")
+
+-- Заменяем выделенный текст на новый
+vim.api.nvim_buf_set_lines(0, start_line - 1, end_line, false, lines)
+
+-- Автоиндентация вставленного блока
+vim.api.nvim_command(string.format("%d,%dnormal! ==", start_line, end_line + 7))
+end
+
+-- Создаем команду для вызова функции
+vim.api.nvim_create_user_command('InsertTryCatch', insert_try_catch, {})
+
+-- Создаем бинд для визуального режима
+vim.api.nvim_set_keymap('v', '<leader>tr', ':<C-u>InsertTryCatch<CR>', { noremap = true, silent = true })
