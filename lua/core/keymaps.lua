@@ -89,4 +89,4 @@ end
 vim.api.nvim_create_user_command('InsertTryCatch', insert_try_catch, {})
 
 -- Создаем бинд для визуального режима
-vim.api.nvim_set_keymap('v', '<leader>tr', ':<C-u>InsertTryCatch<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', '<leader>tr', ':<C-u>InsertTryCatch<CR>5k', { noremap = true, silent = true })
