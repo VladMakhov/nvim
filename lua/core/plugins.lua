@@ -34,11 +34,11 @@ return require('packer').startup(function(use)
         run = ':TSUpdate'
     }
 
-    use {
-        'neovim/nvim-lspconfig',
-        'williamboman/mason.nvim',
-        'williamboman/mason-lspconfig.nvim'
-    }
+    -- use {
+    --    'neovim/nvim-lspconfig',
+    --    'williamboman/mason.nvim',
+    --    'williamboman/mason-lspconfig.nvim'
+    -- }
     use {'neoclide/coc.nvim', branch = 'release'}
     use 'morhetz/gruvbox'
     use 'aktersnurra/no-clown-fiesta.nvim'

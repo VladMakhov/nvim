@@ -6,4 +6,5 @@ require("core.config.telescope")
 require("core.config.treesitter")
 require("core.config.fileexplorer")
 require("core.config.transparent")
-require("core.config.lsp")
+-- require("core.config.lsp")
+
